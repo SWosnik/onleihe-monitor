@@ -25,13 +25,13 @@ sort curr_media_urls.txt | sed -e 's/Details zum Titel: //' > curr_media_urls_so
 
 diff --new-line-format="" --unchanged-line-format=""  curr_media_urls_sorted.txt known_urls.txt > curr_diff.txt
 
-rm curr_media_urls.txt curr_media_urls_sorted.txt 
+rm curr_media_urls.txt curr_media_urls_sorted.txt
 
 # read new URLs
 while IFS= read -r line
 do
     curl --silent \
-              --data-urlencode "chat_id=296922305" \
+              --data-urlencode "chat_id="$ChatId \
               --data-urlencode "disable_web_page_preview=true" \
                     --data-urlencode "text=$line " \
               "https://api.telegram.org/$botId/sendMessage"
